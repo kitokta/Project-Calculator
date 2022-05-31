@@ -2,7 +2,7 @@ const opMultiply = document.getElementById('multiply');
 const opAdd = document.getElementById('add');
 const opSubtract = document.getElementById('subtract');
 const opDivide = document.getElementById('divide');
-
+const input = document.querySelectorAll('.calculator');
 
 
 

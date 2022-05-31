@@ -34,7 +34,8 @@ header {
     border-radius: 8px;
 }
 
-.calculator {
+.calculator,
+.operator {
     height: 80px;
     width: 87.5px;
     border-radius: 8px;
