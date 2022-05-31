@@ -53,6 +53,7 @@ header {
     display: flex;
     height: 562px;
     width: 350px;
+    padding: 0px 5px 8px 8px;
     justify-content: center;
     flex-wrap: wrap;
     border-radius: 5px;
@@ -62,7 +63,9 @@ header {
 }
 
 .calculator,
-.operator {
+.operator,
+.reset,
+.equal {
     height: 80px;
     width: 87.5px;
     border-radius: 10px;
