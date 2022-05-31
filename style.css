@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+height: 100vh;
+padding: 5px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+flex: 1;
+}
+
+header {
+    text-align: center;
+}
+
+.container-box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.calc-box {
+    border: 2px solid #000;
+    display: flex;
+    height: 400px;
+    width: 350px;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 8px;
+}
+
+.calculator {
+    height: 80px;
+    width: 87.5px;
+    border-radius: 8px;
+}
