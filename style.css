@@ -5,11 +5,11 @@
 
 body {
 height: 100vh;
-padding: 5px;
 display: flex;
 flex-direction: column;
-gap: 10px;
-flex: 1;
+background-image: url('./img/binary-1254485.png');
+background-size: cover;
+background-position: center;
 }
 
 header {
@@ -65,7 +65,8 @@ header {
 .calculator,
 .operator,
 .reset,
-.equal {
+.equal,
+.dot {
     height: 80px;
     width: 87.5px;
     border-radius: 10px;
@@ -74,4 +75,14 @@ header {
     color: #fff;
     font-size: 16px;
     font-weight: 400;
+}
+
+footer {
+    background-color: #7080AA;
+    height: 30px;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F9FAF8;
 }
