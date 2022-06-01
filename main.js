@@ -19,11 +19,17 @@ let dotCount = 0;
 //Evento reconhecimento de teclado
 document.addEventListener('keypress', (event) => {
     if (display.textContent.length >= 15) document.removeEventListener('keypress');
-    else if (event.keyCode === 48 || event.keyCode === 49 || event.keyCode === 50 || event.keyCode === 51 || event.keyCode === 52 || event.keyCode === 53 || event.keyCode === 54 || event.keyCode === 55 || event.keyCode === 56 || event.keyCode === 57) {
+    if (event.keyCode === 48 || event.keyCode === 49 || event.keyCode === 50 || event.keyCode === 51 || event.keyCode === 52 || event.keyCode === 53 || event.keyCode === 54 || event.keyCode === 55 || event.keyCode === 56 || event.keyCode === 57 || event.keyCode === 46) {
         if (op!= '') num1 = parseFloat(display.textContent), op = '', display.textContent = '';
+        if (event.keyCode === 46) dotCount++;
         display.textContent = `${display.textContent}${event.key}`;
     } 
-});
+
+    if (event.keyCode === 42) op = 'x', opFinal = 'x', dotCount--;
+    if (event.keyCode === 43) op = '+', opFinal = '+', dotCount--;
+    if (event.keyCode === 45) op = '-', opFinal = '-', dotCount--;
+    if (event.keyCode === 47) op = '/', opFinal = '/', dotCount--;
+   });
 
 
 //função checar se tem mais de um ponto
@@ -103,7 +109,7 @@ input.forEach(item => item.addEventListener('click', (event) => {
 operator.forEach(item => item.addEventListener('click', (event) => {
     checkDot();
     if (event.target.id === 'multiply') op = 'x', opFinal = 'x', dotCount--;
-    else if (event.target.id === 'add') op = '+', opFinal = '+', dotCount--;
+    else if (event.target.id === 'add') op = '43', opFinal = '+', dotCount--;
     else if (event.target.id === 'subtract') op = '-', opFinal = '-', dotCount--;
     else if (event.target.id === 'divide') op = '/', opFinal = '/', dotCount--;
    }));
