@@ -29,6 +29,18 @@ document.addEventListener('keypress', (event) => {
     if (event.keyCode === 43) op = '+', opFinal = '+', dotCount--;
     if (event.keyCode === 45) op = '-', opFinal = '-', dotCount--;
     if (event.keyCode === 47) op = '/', opFinal = '/', dotCount--;
+    if (event.keyCode === 61) {
+        checkDot();
+        if (opFinal === '' ) {
+            alert("Please insert an operator"); 
+            reset();
+            equal.removeEventListener('click');
+        }
+        else {
+            num2 = parseFloat(display.textContent);
+            operate(opFinal, num1, num2);
+        }
+    }
    });
 
 
