@@ -18,7 +18,8 @@ let dotCount = 0;
 
 //Evento reconhecimento de teclado
 document.addEventListener('keypress', (event) => {
-    if (event.keyCode === 48 || event.keyCode === 49 || event.keyCode === 50 || event.keyCode === 51 || event.keyCode === 52 || event.keyCode === 53 || event.keyCode === 54 || event.keyCode === 55 || event.keyCode === 56 || event.keyCode === 57) {
+    if (display.textContent.length >= 15) document.removeEventListener('keypress');
+    else if (event.keyCode === 48 || event.keyCode === 49 || event.keyCode === 50 || event.keyCode === 51 || event.keyCode === 52 || event.keyCode === 53 || event.keyCode === 54 || event.keyCode === 55 || event.keyCode === 56 || event.keyCode === 57) {
         if (op!= '') num1 = parseFloat(display.textContent), op = '', display.textContent = '';
         display.textContent = `${display.textContent}${event.key}`;
     } 
@@ -49,7 +50,7 @@ function reset() {
 //função adicionar
 function add(num1, num2) {
 	result = num1 + num2;
-    return display.textContent = `${result}`;
+    return display.textContent = `${result.toFixed(2)}`;
 };
 
 //função dividir
@@ -60,20 +61,20 @@ function divide(num1, num2) {
     }
     else {
         result = num1 / num2;
-        return display.textContent = `${result}`;
+        return display.textContent = `${result.toFixed(2)}`;
     }
 };
 
 //função subtrair
 function subtract(num1, num2) {
 	result = num1 - num2; 
-    return display.textContent = `${result}`;
+    return display.textContent = `${result.toFixed(2)}`;
 };
 
 //função multiplicar
 function multiply(num1, num2) {
     result = num1 * num2;
-    return display.textContent = `${result}`;
+    return display.textContent = `${result.toFixed(2)}`;
   };
 
  //função de chamar operação 
@@ -93,7 +94,8 @@ dot.addEventListener('click', () => {
 
 //reconhecimento dos numeros na tela
 input.forEach(item => item.addEventListener('click', (event) => {
-    if (op!= '') num1 = parseFloat(display.textContent), op = '', display.textContent = '';
+    if (display.textContent.length >= 15) item.removeEventListener('click');
+    else if (op!= '') num1 = parseFloat(display.textContent), op = '', display.textContent = '';
     display.textContent = `${display.textContent}${event.target.value}`;
 }));
 
