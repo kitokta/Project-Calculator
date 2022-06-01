@@ -13,6 +13,7 @@ let num2 = 0;
 let op = ''
 let numbers = [];
 let opCount = 1;
+let result = 0;
 //função limpar
 function reset() {
     display.textContent = "";
@@ -20,26 +21,27 @@ function reset() {
     num1 = '';
     num2 = '';
     numbers = [];
+    result = '';
 }
 
 //função adicionar
 function add(num1, num2) {
-	return num1 + num2;
+	return result = num1 + num2;
 };
 
 //função dividir
 function divide(num1, num2) {
-	return num1 / num2;
+	return result = num1 / num2;
 };
 
 //função subtrair
 function subtract(num1, num2) {
-	return num1 - num2;
+	return result = num1 - num2;
 };
 
 //função multiplicar
 function multiply(num1, num2) {
-    return num1 * num2;
+    return result = num1 * num2;
   };
 
  //função de chamar operação 
@@ -49,6 +51,13 @@ function operate(op, num1, num2) {
     else if (op === "-") return subtract(num1, num2);
     else return multiply(num1, num2);
 };
+
+//guarda os dois numeros da conta
+function split() {
+    numbers = display.textContent.split(/[+-/*]+/);
+    return num1 = parseInt(numbers[0]),
+        num2 = parseInt(numbers[1]);
+}
 
 //reconhecimento do ponto na tela
 dot.addEventListener('click', () => {
@@ -77,17 +86,16 @@ clear.addEventListener('click', () => {
 
 //Botão de igual (chamar operação)
 equal.addEventListener('click', () => {
-    if (op === '+') numbers = display.textContent.split('+');
-    else if (op === '-') numbers = display.textContent.split('-');
-    else if (op === '/') numbers = display.textContent.split('/');
-    else if (op === 'x') numbers = display.textContent.split('x');
+    //if (op === '+') numbers = display.textContent.split('+');
+    //else if (op === '-') numbers = display.textContent.split('-');
+    //else if (op === '/') numbers = display.textContent.split('/');
+    //else if (op === 'x') numbers = display.textContent.split('x');
     if (op === '' ) {
         alert("Please insert an operator"); 
         reset();
         equal.removeEventListener('click');
     }
-    //numbers = display.textContent.split(/[+-/*]+/);
-    num1 = parseInt(numbers[0]);
-    num2 = parseInt(numbers[1]);
-    display.textContent = `${operate(op, num1, num2)}`;
+    split();
+    operate(op, num1, num2)
+    display.textContent = `${result}`;
    });
