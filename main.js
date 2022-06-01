@@ -58,7 +58,7 @@ function reset() {
 function add(num1, num2) {
 	result = num1 + num2;
     if (result%1 === 0) return display.textContent = `${parseInt(result)}`;
-    else return display.textContent = `${result.toFixed(2)}`;
+    else return display.textContent = `${result.toFixed(3)}`;
 };
 
 //função dividir
@@ -70,7 +70,7 @@ function divide(num1, num2) {
     else {
         result = num1 / num2;
         if (result%1 === 0) return display.textContent = `${parseInt(result)}`;
-        else return display.textContent = `${result.toFixed(2)}`;
+        else return display.textContent = `${result.toFixed(3)}`;
     }
 };
 
@@ -78,14 +78,14 @@ function divide(num1, num2) {
 function subtract(num1, num2) {
 	result = num1 - num2; 
     if (result%1 === 0) return display.textContent = `${parseInt(result)}`;
-    else return display.textContent = `${result.toFixed(2)}`;
+    else return display.textContent = `${result.toFixed(3)}`;
 };
 
 //função multiplicar
 function multiply(num1, num2) {
     result = num1 * num2;
     if (result%1 === 0) return display.textContent = `${parseInt(result)}`;
-    else return display.textContent = `${result.toFixed(2)}`;
+    else return display.textContent = `${result.toFixed(3)}`;
   };
 
  //função de chamar operação 
