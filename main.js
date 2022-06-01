@@ -34,8 +34,14 @@ function add(num1, num2) {
 
 //função dividir
 function divide(num1, num2) {
-	result = num1 / num2;
-    return display.textContent = `${result}`;
+    if (num2 === 0 ) {
+        alert("Can't divide by 0"); 
+        return reset();
+    }
+    else {
+        result = num1 / num2;
+        return display.textContent = `${result}`;
+    }
 };
 
 //função subtrair
