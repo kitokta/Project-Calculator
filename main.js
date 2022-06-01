@@ -12,8 +12,8 @@ let num1 = 0;
 let num2 = 0;
 let op = ''
 let numbers = [];
-let opCount = 1;
 let result = 0;
+
 //função limpar
 function reset() {
     display.textContent = "";
@@ -66,7 +66,7 @@ dot.addEventListener('click', () => {
 
 //reconhecimento dos numeros na tela
 input.forEach(item => item.addEventListener('click', (event) => {
- display.textContent = `${display.textContent}${event.target.value}`;
+    display.textContent = `${display.textContent}${event.target.value}`;
 }));
 
 //reconhecimento dos operadores na tela
@@ -76,7 +76,6 @@ operator.forEach(item => item.addEventListener('click', (event) => {
     else if (event.target.id === 'subtract') op = '-';
     else if (event.target.id === 'divide') op = '/';
     display.textContent = `${display.textContent}${op}`;
-    opCount ++;
    }));
 
 //botão de limpar
