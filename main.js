@@ -38,6 +38,7 @@ function checkDot() {
         alert("Can't work with floating point numbers"); 
         return reset();
     }
+    else if (dotCount === 1) return dotCount--;
     else return;
 }
 
@@ -56,7 +57,8 @@ function reset() {
 //função adicionar
 function add(num1, num2) {
 	result = num1 + num2;
-    return display.textContent = `${result.toFixed(2)}`;
+    if (result%1 === 0) return display.textContent = `${parseInt(result)}`;
+    else return display.textContent = `${result.toFixed(2)}`;
 };
 
 //função dividir
@@ -67,20 +69,23 @@ function divide(num1, num2) {
     }
     else {
         result = num1 / num2;
-        return display.textContent = `${result.toFixed(2)}`;
+        if (result%1 === 0) return display.textContent = `${parseInt(result)}`;
+        else return display.textContent = `${result.toFixed(2)}`;
     }
 };
 
 //função subtrair
 function subtract(num1, num2) {
 	result = num1 - num2; 
-    return display.textContent = `${result.toFixed(2)}`;
+    if (result%1 === 0) return display.textContent = `${parseInt(result)}`;
+    else return display.textContent = `${result.toFixed(2)}`;
 };
 
 //função multiplicar
 function multiply(num1, num2) {
     result = num1 * num2;
-    return display.textContent = `${result.toFixed(2)}`;
+    if (result%1 === 0) return display.textContent = `${parseInt(result)}`;
+    else return display.textContent = `${result.toFixed(2)}`;
   };
 
  //função de chamar operação 
@@ -108,10 +113,10 @@ input.forEach(item => item.addEventListener('click', (event) => {
 //reconhecimento dos operadores na tela
 operator.forEach(item => item.addEventListener('click', (event) => {
     checkDot();
-    if (event.target.id === 'multiply') op = 'x', opFinal = 'x', dotCount--;
-    else if (event.target.id === 'add') op = '43', opFinal = '+', dotCount--;
-    else if (event.target.id === 'subtract') op = '-', opFinal = '-', dotCount--;
-    else if (event.target.id === 'divide') op = '/', opFinal = '/', dotCount--;
+    if (event.target.id === 'multiply') op = 'x', opFinal = 'x';
+    else if (event.target.id === 'add') op = '43', opFinal = '+';
+    else if (event.target.id === 'subtract') op = '-', opFinal = '-';
+    else if (event.target.id === 'divide') op = '/', opFinal = '/';
    }));
 
 //botão de limpar
