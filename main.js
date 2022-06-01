@@ -14,6 +14,25 @@ let op = '';
 let opFinal = '';
 let numbers = [];
 let result = 0;
+let dotCount = 0;
+
+//Evento reconhecimento de teclado
+document.addEventListener('keypress', (event) => {
+    if (event.keyCode === 48 || event.keyCode === 49 || event.keyCode === 50 || event.keyCode === 51 || event.keyCode === 52 || event.keyCode === 53 || event.keyCode === 54 || event.keyCode === 55 || event.keyCode === 56 || event.keyCode === 57) {
+        if (op!= '') num1 = parseFloat(display.textContent), op = '', display.textContent = '';
+        display.textContent = `${display.textContent}${event.key}`;
+    } 
+});
+
+
+//função checar se tem mais de um ponto
+function checkDot() {
+    if (dotCount > 1) {
+        alert("Can't work with floating point numbers"); 
+        return reset();
+    }
+    else return;
+}
 
 //função limpar
 function reset() {
@@ -24,6 +43,7 @@ function reset() {
     numbers = [];
     result = '';
     opFinal = '';
+    dotCount = '0';
 }
 
 //função adicionar
@@ -67,21 +87,23 @@ function operate(op, num1, num2) {
 
 //reconhecimento do ponto na tela
 dot.addEventListener('click', () => {
+    dotCount ++;
     display.textContent = `${display.textContent}.`;
    });
 
 //reconhecimento dos numeros na tela
 input.forEach(item => item.addEventListener('click', (event) => {
-    if (op!= '') num1 = parseInt(display.textContent), op = '', display.textContent = '';
+    if (op!= '') num1 = parseFloat(display.textContent), op = '', display.textContent = '';
     display.textContent = `${display.textContent}${event.target.value}`;
 }));
 
 //reconhecimento dos operadores na tela
 operator.forEach(item => item.addEventListener('click', (event) => {
-    if (event.target.id === 'multiply') op = 'x', opFinal = 'x';
-    else if (event.target.id === 'add') op = '+', opFinal = '+';
-    else if (event.target.id === 'subtract') op = '-', opFinal = '-';
-    else if (event.target.id === 'divide') op = '/', opFinal = '/';
+    checkDot();
+    if (event.target.id === 'multiply') op = 'x', opFinal = 'x', dotCount--;
+    else if (event.target.id === 'add') op = '+', opFinal = '+', dotCount--;
+    else if (event.target.id === 'subtract') op = '-', opFinal = '-', dotCount--;
+    else if (event.target.id === 'divide') op = '/', opFinal = '/', dotCount--;
    }));
 
 //botão de limpar
@@ -91,17 +113,14 @@ clear.addEventListener('click', () => {
 
 //Botão de igual (chamar operação)
 equal.addEventListener('click', () => {
-    //if (op === '+') numbers = display.textContent.split('+');
-    //else if (op === '-') numbers = display.textContent.split('-');
-    //else if (op === '/') numbers = display.textContent.split('/');
-    //else if (op === 'x') numbers = display.textContent.split('x');
+    checkDot();
     if (opFinal === '' ) {
         alert("Please insert an operator"); 
         reset();
         equal.removeEventListener('click');
     }
     else {
-        num2 = parseInt(display.textContent);
+        num2 = parseFloat(display.textContent);
         operate(opFinal, num1, num2);
     }
    });
